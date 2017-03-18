@@ -1,38 +1,34 @@
 <?php
 
-	class ShopProduct {
+	    class ShopProduct {
 
-		public $title = "Стандартный товар"; // свойство класса
-		public $producerMainName = "Фамилия автора";
-		public $producerFirstName = "Имя автора";
-		public $price = 0;
+        public $title = "Стандартный товар"; // свойство класса
+        public $producerMainName = "Фамилия автора";
+        public $producerFirstName = "Имя автора";
+        public $price = 0;
 
-	}
+        /*add method*/
 
+            function getProducer () {
 
-	$product1 = new ShopProduct();
-	$product2 = new ShopProduct();
-	echo $product1 -> title; // вывести свойство обьекта $product1
+                return "{$this -> ProducerFirstName}"
+                        ."{$this -> ProducerMainName}"
 
-	$product1 -> title = "Новое значение свойства\n"; 
-	echo $product1 -> title;
+            }
 
-	$product1 -> Addition = "Дополнительный параметр\n"; // параметр Addition добавлен динамически (вне класса)
-	echo $product1 -> Addition . "<br>";
+    }
 
 
+    $product1 = new ShopProduct();
 
-	/*Определение нескольких свойств для нескольких обьектов часто становится неприятной задачей*/
+    // Определить значения метода (не переопределить значение свойства ! команда echo говорит вывести метод $product1 -> getProducer(), а не свойство):
 
-	$product1 = new ShopProduct();
+    $product1 -> ProducerFirstName = "Шварценеггер\n";
+    $product1 -> ProducerMainName = "Арнольд";
 
-	$product1 -> title = "Воспитание культуриста";
-	$product1 -> producerMainName = "Шварценеггер";
-	$product1 -> producerFirstName = "Арнольд";
-	$product1 -> price = 5.99;
-	// Здесь (в отличии от обьявления в классе) для свойств (напр. title) не задается значение переменной $
+    echo "Автор: {$product1 -> getProducer()}";
 
-	print "Автор: {$product1 -> producerFirstName} " . "{$product1 -> producerMainName}\n";
+// => Автор: Шварценеггер Арнольд
 
 
 ?>
